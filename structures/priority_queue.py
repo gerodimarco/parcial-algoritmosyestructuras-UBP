@@ -7,6 +7,7 @@ class PriorityQueue:
 
     Los eventos con menor valor de prioridad
     serán atendidos primero.
+
     """
 
     def __init__(self):
@@ -21,6 +22,7 @@ class PriorityQueue:
             (
                 event.priority,
                 event.timestamp,
+                event.event_id,
                 event
             )
         )
@@ -32,7 +34,7 @@ class PriorityQueue:
         if self.is_empty():
             return None
 
-        return heapq.heappop(self._heap)[2]
+        return heapq.heappop(self._heap)[3]
 
     def peek(self):
         """
@@ -41,7 +43,7 @@ class PriorityQueue:
         if self.is_empty():
             return None
 
-        return self._heap[0][2]
+        return self._heap[0][3]
 
     def is_empty(self):
         return len(self._heap) == 0

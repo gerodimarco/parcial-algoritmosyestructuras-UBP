@@ -7,7 +7,6 @@ class EventStore:
 
     Utiliza una lista dinámica de Python para guardar
     los incidentes registrados.
-
     """
 
     def __init__(self):
@@ -24,12 +23,12 @@ class EventStore:
 
     def get_all_events(self) -> list[Event]:
         """
-        Retorna todos los eventos almacenados.
+        Retorna una copia de todos los eventos almacenados.
 
         Returns:
             list[Event]: Lista completa de eventos.
         """
-        return self._events
+        return self._events.copy()
 
     def find_by_id(self, event_id: int) -> Event | None:
         """
@@ -37,6 +36,7 @@ class EventStore:
 
         Args:
             event_id (int): ID buscado.
+
         Returns:
             Event | None
         """
@@ -52,6 +52,7 @@ class EventStore:
 
         Args:
             event_id (int): ID del evento.
+
         Returns:
             bool: True si fue eliminado, False en caso contrario.
         """
@@ -65,6 +66,7 @@ class EventStore:
     def count(self) -> int:
         """
         Devuelve la cantidad total de eventos.
+
         Returns:
             int
         """
